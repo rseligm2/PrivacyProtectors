@@ -1,0 +1,10 @@
+{
+    "name": "Facebook Privacy App",
+    "version": "1.0",
+    "description": "Extension for Facebook to increase familiarity with targeted ads",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
+    "manifest_version": 2
+}
