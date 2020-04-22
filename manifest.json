@@ -11,7 +11,7 @@
     "page_action": {
         "default_icon": "resources/lock_icon.png",
         "default title": "Privacy Protector",
-        "default popup": "home.html"
+        "default popup": "popup.html"
     },
     "content_scripts": [
         {
