@@ -1,5 +1,6 @@
-const chart = `
+let chart = `
     <div>
+        <script src="node_modules/chart.js/dist/Chart.js"></script>
         <canvas id="piechart" width="400" height="400"></canvas>
         <script>
         var ctx = document.getElementById(piechart);
@@ -31,4 +32,6 @@ const chart = `
         </script>
     </div>`
 ;
-
+let test = document.createElement('h2');
+const section = document.getElementById('PAGES_CONTAINER');
+section.append(chart);

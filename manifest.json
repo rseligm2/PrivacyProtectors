@@ -4,9 +4,13 @@
     "description": "Extension for Facebook to increase familiarity with targeted ads",
     "background": {
         "scripts": ["background.js"],
-        "persistent": true
+        "persistent": false
     },
-    "permissions": ["declarativeContent","storage"],
+    "permissions": [
+        "declarativeContent",
+        "storage",
+        "https://meganeg27.wixsite.com/"
+    ],
     "manifest_version": 2,
     "page_action": {
         "default_icon": "resources/lock_icon.png",
@@ -16,9 +20,7 @@
     "content_scripts": [
         {
             "matches": ["https://meganeg27.wixsite.com/*"],
-            "css": ["main.css"],
-            "js": ["piechart.js"],
-            "run_at": "document_end",
-            "all_frames": true
+            "js": ["content.js"],
+            "run_at": "document_idle"
         }]
 }
