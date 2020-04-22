@@ -33,5 +33,7 @@ let chart = `
     </div>`
 ;
 let test = document.createElement('h2');
-const section = document.getElementById('PAGES_CONTAINER');
-section.append(chart);
+const section = document.getElementById('bluebarRoot');
+var clean = DOMPurify.sanitize(test);
+section.append(test);
+

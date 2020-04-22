@@ -20,7 +20,7 @@
     "content_scripts": [
         {
             "matches": ["https://meganeg27.wixsite.com/*"],
-            "js": ["content.js"],
+            "js": ["node_modules/dompurify/dist/purify.min.js","content.js"],
             "run_at": "document_idle"
         }]
 }
