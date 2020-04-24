@@ -10,7 +10,7 @@ let chart = `
                 datasets: [{
                     data: [20, 35, 15, 10, 20]
                 }],
-        
+
                 // These labels appear in the legend and in the tooltips when hovering different arcs
                 labels: [
                     'Photography',
@@ -32,8 +32,14 @@ let chart = `
         </script>
     </div>`
 ;
-let test = document.createElement('h2');
-const section = document.getElementById('bluebarRoot');
-var clean = DOMPurify.sanitize(test);
-section.append(test);
 
+`let test = document.createElement('h2');
+const section = document.getElementById('mp-tfa-h2');
+var clean = DOMPurify.sanitize(test);
+section.append(test);`
+
+const section = document.getElementById('u_0_a'); `pagelet_reminders`
+var button = document.createElement("button");
+var text = document.createTextNode("Ad Tracker");
+button.appendChild(text);
+section.appendChild(button);
