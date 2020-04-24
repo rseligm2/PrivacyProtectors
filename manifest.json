@@ -9,7 +9,7 @@
     "permissions": [
         "declarativeContent",
         "storage",
-        "https://meganeg27.wixsite.com/"
+        "https://www.facebook.com/"
     ],
     "manifest_version": 2,
     "page_action": {
@@ -19,7 +19,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://meganeg27.wixsite.com/*"],
+            "matches": ["https://www.facebook.com/*"],
             "js": ["node_modules/dompurify/dist/purify.min.js","content.js"],
             "run_at": "document_idle"
         }]
