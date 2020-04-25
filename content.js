@@ -1,15 +1,25 @@
-const section = document.getElementById('u_0_a'); `pagelet_reminders`
+const section = document.getElementById('globalContainer'); `pagelet_reminders`
 var button = document.createElement("button");
 var text = document.createTextNode("Ad Tracker");
 button.appendChild(text);
 section.appendChild(button);
 
-var add = document.createElement('script');
-add.src = 'node_modules/chart.js/dist/Chart.js';
-document.body.appendChild(add);
+const add = document.createElement('script');
+add.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js';
+document.head.appendChild(add);
 
-var theScript = document.createElement('script');
+const theScript = document.createElement('script');
 theScript.src = "sampleChart.js";
+
+const canvas = document.createElement("canvas");
+canvas.id = "myChart";
+canvas.width = "200";
+canvas.height = "200";
+canvas.addEventListener("load", addScript);
+
+const chartSection = document.createElement('div');
+chartSection.appendChild(canvas);
+`chartSection.appendChild(theScript);`
 
 const section2 = document.getElementById('pagelet_bluebar');
 
@@ -27,13 +37,15 @@ function createScript(){
   document.body.appendChild(theScript);
 }`
 
+function addScript(){
+  document.body.appendChild(theScript);
+}
+
 button.onclick = function(){
-  var canvas = document.createElement("canvas");
-  canvas.id = "myChart";
-  canvas.width = "200";
-  canvas.height = "200";
-  section2.appendChild(canvas);
+  section.appendChild(chartSection);
+  chrome.runtime.sendMessage({greeting: "canvas_loaded"}, function(response) {
+    console.log(response.farewell);
+  });
   `section2.appendChild(canvas);
   Promise.resolve().then(createScript());`
-  document.body.appendChild(theScript);
 };

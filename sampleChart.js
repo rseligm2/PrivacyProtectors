@@ -1,5 +1,5 @@
 var ctx = document.getElementById('myChart').getContext('2d');
-        const piechart = new Chart(ctx, {
+        const myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 datasets: [{

@@ -9,7 +9,8 @@
     "permissions": [
         "declarativeContent",
         "storage",
-        "https://www.facebook.com/"
+        "https://www.facebook.com/",
+        "activeTab"
     ],
     "manifest_version": 2,
     "page_action": {
@@ -20,7 +21,7 @@
     "content_scripts": [
         {
             "matches": ["https://www.facebook.com/*"],
-            "js": ["node_modules/dompurify/dist/purify.min.js", "node_modules/chart.js/dist/Chart.js", "content.js", "sampleChart.js"],
+            "js": ["node_modules/dompurify/dist/purify.min.js", "node_modules/chart.js/dist/Chart.js","content.js"],
             "run_at": "document_idle"
         }]
 }
