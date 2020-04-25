@@ -4,12 +4,6 @@ chrome.runtime.onInstalled.addListener(function() {
     });
 });
 
-// chrome.tabs.onUpdated.addListener(function(id, info, tab){
-//     if (tab.url.toLowerCase().indexOf("https://meganeg27.wixsite.com/") > -1){
-//         chrome.pageAction.show(tab.id);
-//     }
-// });
-
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
         conditions: [new chrome.declarativeContent.PageStateMatcher({

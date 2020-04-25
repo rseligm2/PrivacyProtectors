@@ -20,7 +20,7 @@
     "content_scripts": [
         {
             "matches": ["https://www.facebook.com/*"],
-            "js": ["node_modules/dompurify/dist/purify.min.js","content.js"],
+            "js": ["node_modules/dompurify/dist/purify.min.js","content.js", "sampleChart.js"],
             "run_at": "document_idle"
         }]
 }
