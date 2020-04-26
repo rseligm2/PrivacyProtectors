@@ -1,18 +1,5 @@
 var ctx = document.getElementById('myChart').getContext('2d');
 
-var defaultLegendClickHandler = Chart.defaults.global.legend.onClick;
-var newLegendClickHandler = function (e, legendItem) {
-    var index = legendItem.datasetIndex;
-    var ci = this.chart;
-    var meta = ci.getDatasetMeta(index);
-
-    // See controller.isDatasetVisible comment
-    //meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-
-    // We hid a dataset ... rerender the chart
-    //ci.update();
-};
-
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -39,19 +26,10 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
-      onClick:function(e){
-        var activePoints = myChart.getElementsAtEvent(e);
-        var selectedIndex = activePoints[0]._index;
-        myChart.destroy();
-        chrome.runtime.sendMessage({greeting: "canvas2_loaded"}, function(response) {
-          console.log(response.farewell);
-        });
-      },
       responsive: true,
       maintainAspectRatio: false,
       legend: {
         fontColor: "#666",
-        onClick: newLegendClickHandler
       }
     },
     animation: {
