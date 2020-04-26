@@ -4,6 +4,11 @@ var text = document.createTextNode("Ad Tracker");
 button.appendChild(text);
 section.appendChild(button);
 
+var backButton = document.createElement("button");
+var backButtonText = document.createTextNode("Back");
+backButton.appendChild(backButtonText);
+backButton.id = "backButton";
+
 var chartContainer = document.createElement('div');
 chartContainer.id = 'chartContainer';
 
@@ -59,6 +64,7 @@ chartSection.appendChild(subtitle1);
 chartSection.appendChild(subtitle2);
 chartSection.appendChild(link);
 chartSection.appendChild(chartContainer);
+chartSection.appendChild(backButton);
 chartSection.appendChild(footer);
 
 const section2 = document.getElementById('pagelet_bluebar');
@@ -73,3 +79,9 @@ button.onclick = function(){
     console.log(response.farewell);
   });
 };
+
+backButton.onclick = function(){ 
+  chrome.runtime.sendMessage({greeting: "back button pressed", }, function(response) {
+    console.log(response.farewell);
+  });
+}

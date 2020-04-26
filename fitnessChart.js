@@ -29,30 +29,23 @@ var myChart = new Chart(ctx, {
       responsive: true,
       maintainAspectRatio: false,
       legend: {
-        fontColor: "#666",
+        fontColor: "black",
       },
-      animation: {
-        onComplete: function(e){
-          console.log(this.chart.height);
-          var xCenter = this.chart.width/2;
-          var yCenter = this.chart.height/2;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-
-          var title = "Fitness: 35%"
-          ctx.font = '16px sans-serif'
-          ctx.fillStyle = 'black';
-          ctx.fillText(title,xCenter,yCenter);
-        }
-      }
+      title: {
+        display: true,
+        text: "Fitness",
+        fontSize: 30,
+        fontStyle: "normal",
+        fontColor: "black",
+      },
     }
 });
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if(request.greeting == "destroy chart"){
+    if(request.greeting == "destroy specific chart"){
       myChart.destroy();
-      console.log("chart destroyed");
+      console.log("specific chart destroyed");
       sendResponse({farewell: "received"});
     }
   });

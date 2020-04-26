@@ -29,6 +29,11 @@
     margin-bottom: 25px;
     margin-top: 20px;
 }
+#backButton{
+    display: None;
+    margin: auto;
+    margin-bottom: 20px;
+}
 .subtitles {
     font-size: 12px;
 }

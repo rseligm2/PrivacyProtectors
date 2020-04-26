@@ -35,6 +35,11 @@ chrome.runtime.onMessage.addListener(
                             console.log(response.farewell);
                         });
                     });
+                    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                        chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy specific chart"}, function(response){
+                            console.log(response.farewell);
+                        });
+                    });
                     chrome.tabs.executeScript({
                         code: 'var sect = document.getElementById("chartSection");' +
                             'sect.remove();'
@@ -49,12 +54,33 @@ chrome.runtime.onMessage.addListener(
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+        if (request.greeting == "back button pressed") {
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy specific chart"}, function(response){
+                    console.log(response.farewell);
+                });
+            });
+            chrome.tabs.executeScript({
+                file: 'sampleChart.js'
+            });
+            sendResponse({farewell: "received"});
+        }
+    }
+);
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
         console.log(sender.tab ?
                 "from a content script:" + sender.tab.url :
                 "from the extension");
             if (request.greeting == "canvas2_loaded") {
                 console.log("canvas2");
                 console.log(request.index);
+                chrome.tabs.executeScript({
+                    code: 'var button = document.getElementById("backButton");' +
+                        'button.style.display = "block";'
+                });
+
                 if (request.index == 0){
                     chrome.storage.local.set({chart_name: "photographyChart.js"}, function () {
                         console.log("photographyChart.js")
