@@ -1,11 +1,23 @@
 #chartSection {
     position: relative;
     width: 80vw;
-    height: 40vh;
+    height: 50vh;
     margin: auto;
 }
 #footer {
     text-align: center;
     font-family: sans-serif;
-    size: 30px;
+    font-size: 30px;
+}
+#title {
+    font-size: 40px;
+    text-align: center;
+}
+#chartContainer {
+    top: 0;
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    left: 50%;
+    right: 50%;
 }

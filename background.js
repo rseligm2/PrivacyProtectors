@@ -33,7 +33,9 @@ chrome.runtime.onMessage.addListener(
                 "from a content script:" + sender.tab.url :
                 "from the extension");
             if (request.greeting == "canvas2_loaded") {
-                console.log("canvas2");
+                chrome.tabs.executeScript({
+                    file: 'fitnessChart.js'
+                });
                 sendResponse({farewell: "received"});
             }
     });
