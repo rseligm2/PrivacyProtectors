@@ -42,16 +42,15 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+      onClick:function(e){ 
+        var activePoints = myChart.getElementsAtEvent(e); 
+        var selectedIndex = activePoints[0]._index;
+        chrome.runtime.sendMessage({greeting: "canvas2_loaded"}, function(response) {
+          console.log(response.farewell);
+        });
+      },
       responsive: true,
       maintainAspectRatio: false,
-      title: {
-        display: true,
-        text: 'Control What You See In Your Feed',
-        fontStyle: "bold",
-        fontSize: 24,
-        fontColor: "#000",
-        padding: 20
-      },
       legend: {
         fontColor: "#666",
         onClick: newLegendClickHandler

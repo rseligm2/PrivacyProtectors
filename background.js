@@ -26,3 +26,14 @@ chrome.runtime.onMessage.addListener(
             sendResponse({farewell: "received"});
         }
     });
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+            if (request.greeting == "canvas2_loaded") {
+                console.log("canvas2");
+                sendResponse({farewell: "received"});
+            }
+    });
