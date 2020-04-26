@@ -42,7 +42,6 @@ chrome.runtime.onMessage.addListener(
         }
     });
 
-
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         console.log(sender.tab ?
@@ -50,10 +49,38 @@ chrome.runtime.onMessage.addListener(
                 "from the extension");
             if (request.greeting == "canvas2_loaded") {
                 console.log("canvas2");
-                chrome.tabs.executeScript({
-                    file: 'fitnessChart.js'
+                console.log(request.index);
+                if (request.index == 0){
+                    chrome.storage.local.set({chart_name: "photographyChart.js"}, function () {
+                        console.log("photographyChart.js")
+                    });
+                }
+                else if(request.index == 1){
+                    chrome.storage.local.set({chart_name: "fitnessChart.js"}, function () {
+                        console.log("fitnessChart.js")
+                    });
+                }
+                else if(request.index == 2){
+                    chrome.storage.local.set({chart_name: "insuranceChart.js"}, function () {
+                        console.log("insuranceChart.js")
+                    });
+                }
+                else if(request.index == 3){
+                    chrome.storage.local.set({chart_name: "beautyFashionChart.js"}, function () {
+                        console.log("beautyFashionChart.js")
+                    });
+                }
+                else if(request.index == 4){
+                    chrome.storage.local.set({chart_name: "vacationsChart.js"}, function () {
+                        console.log("vacationsChart.js")
+                    });
+                }
+                chrome.storage.local.get(['chart_name'], function (result) {
+                    console.log("executedChart");
+                    chrome.tabs.executeScript({
+                        file: result.chart_name
+                    });
                 });
-                console.log("executedFitness");
                 sendResponse({farewell: "received"});
             }
     });

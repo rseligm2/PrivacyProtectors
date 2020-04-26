@@ -16,10 +16,10 @@ var newLegendClickHandler = function (e, legendItem) {
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Chicago Marathon',
-                    'Planet Fitness',
-                    'BeachBody',
-                    'Runners World'],
+        labels: ['State Farm',
+                    'AllState',
+                    'Geico',
+                    'Nation Wide'],
         datasets: [{
             label: 'Percentage of Ads',
             data: [10, 20, 30, 40],
@@ -52,8 +52,9 @@ var myChart = new Chart(ctx, {
       legend: {
         fontColor: "#666",
         onClick: newLegendClickHandler
-      },
-      animation: {
+      }
+    },
+    animation: {
         onComplete: function(e){
           console.log(this.chart.height);
           var xCenter = this.chart.width/2;
@@ -61,11 +62,10 @@ var myChart = new Chart(ctx, {
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
-          var title = "Fitness: 35%"
+          var title = "Insurance: 15%"
           ctx.font = '16px sans-serif'
           ctx.fillStyle = 'black';
           ctx.fillText(title,xCenter,yCenter);
         }
       }
-    }
 });

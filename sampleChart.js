@@ -46,7 +46,7 @@ var myChart = new Chart(ctx, {
         var activePoints = myChart.getElementsAtEvent(e); 
         var selectedIndex = activePoints[0]._index;
         myChart.destroy();
-        chrome.runtime.sendMessage({greeting: "canvas2_loaded"}, function(response) {
+        chrome.runtime.sendMessage({greeting: "canvas2_loaded", index: selectedIndex}, function(response) {
           console.log(response.farewell);
         });
       },

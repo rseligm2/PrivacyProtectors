@@ -16,10 +16,10 @@ var newLegendClickHandler = function (e, legendItem) {
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Chicago Marathon',
-                    'Planet Fitness',
-                    'BeachBody',
-                    'Runners World'],
+        labels: ['Expedia',
+                    'Google Flights',
+                    'Trip Advisor',
+                    'Kayak'],
         datasets: [{
             label: 'Percentage of Ads',
             data: [10, 20, 30, 40],
@@ -61,7 +61,7 @@ var myChart = new Chart(ctx, {
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
-          var title = "Fitness: 35%"
+          var title = "Vacations: 20%"
           ctx.font = '16px sans-serif'
           ctx.fillStyle = 'black';
           ctx.fillText(title,xCenter,yCenter);
