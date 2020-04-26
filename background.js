@@ -1,7 +1,5 @@
 chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.sync.set({color: '#3aa757'}, function() {
-        console.log("The color is green.");
-    });
+    chrome.storage.local.set({chart_loaded: false});
 });
 
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
@@ -19,13 +17,30 @@ chrome.runtime.onMessage.addListener(
         console.log(sender.tab ?
             "from a content script:" + sender.tab.url :
             "from the extension");
-        if (request.greeting == "canvas_loaded") {
-            chrome.tabs.executeScript({
-                file: 'sampleChart.js'
+        chrome.storage.local.get(['chart_loaded'], function(result){
+            console.log('chart_loaded is ' + result.chart_loaded);
+            if(!result.chart_loaded) {
+                if (request.greeting == "canvas_loaded") {
+                    chrome.tabs.executeScript({
+                        file: 'sampleChart.js'
+                    });
+                    chrome.storage.local.set({chart_loaded: true}, function () {
+                        console.log('chart_loaded set to ' + true)
+                    });
+                    sendResponse({farewell: "received"});
+                }
+            } else{
+                    chrome.tabs.executeScript({
+                        code: 'var sect = document.getElementById("chartSection");' +
+                            'sect.remove();'
+                    });
+                    chrome.storage.local.set({chart_loaded: false}, function(){
+                        console.log('chart_loaded set to ' + false)
+                    });
+                }
             });
-            sendResponse({farewell: "received"});
-        }
     });
+
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
