@@ -10,6 +10,16 @@ title.id = 'title';
 var titleText = document.createTextNode("Control What You See In Your Feed.");
 title.appendChild(titleText);
 
+var subTitle1 = document.createElement('p');
+var subTitleText1 = document.createTextNode("Facebook's ad platform curates a personalized feed of the products and services you may enjoy using third-party data.");
+subTitleText1.class = "subtitles";
+subTitle1.appendChild(subTitleText1);
+
+var subTitle2 = document.createElement('p');
+var subTitleText2 = document.createTextNode("Learn what influences the ads you see and take control over your ad experience.");
+subTitleText2.class = "subtitles";
+subTitle2.appendChild(subTitleText2);
+
 var footer = document.createTextNode('To control the information that is used to deliver personalized ads, visit ');
 footer.id = "footer";
 var linkName = document.createTextNode("Your Ad Preferences");
@@ -29,8 +39,9 @@ theScript.src = "sampleChart.js";
 const canvas = document.createElement("canvas");
 canvas.id = "myChart";
 canvas.width = "400";
-canvas.height = "400”;
+canvas.height = "400";
 canvas.addEventListener("load", addScript);
+chartContainer.appendChild(canvas);
 
 var link = document.createElement('link');
 link.rel = "stylesheet";
@@ -40,6 +51,8 @@ const chartSection = document.createElement('div');
 chartSection.id = "chartSection";
 
 chartSection.appendChild(title);
+chartSection.appendChild(subTitle1);
+chartSection.appendChild(subTitle2);
 chartSection.appendChild(link);
 chartSection.appendChild(chartContainer);
 chartSection.appendChild(footer);
