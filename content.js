@@ -1,4 +1,4 @@
-const section = document.getElementById('globalContainer'); `pagelet_reminders`
+const section = document.getElementById('u_0_a'); `pagelet_reminders`
 var button = document.createElement("button");
 var text = document.createTextNode("Ad Tracker");
 button.appendChild(text);
@@ -13,8 +13,8 @@ theScript.src = "sampleChart.js";
 
 const canvas = document.createElement("canvas");
 canvas.id = "myChart";
-canvas.width = "200";
-canvas.height = "200";
+canvas.width = "400";
+canvas.height = "400";
 canvas.addEventListener("load", addScript);
 
 const chartSection = document.createElement('div');
@@ -23,13 +23,13 @@ chartSection.appendChild(canvas);
 
 const section2 = document.getElementById('pagelet_bluebar');
 
-`function waitForElement(selector) {    
-  return new Promise(function(resolve, reject) {         
-    var element = document.querySelector(selector);         
-    if(element) {             
-      resolve(element);         
-    }     
-  }); 
+`function waitForElement(selector) {
+  return new Promise(function(resolve, reject) {
+    var element = document.querySelector(selector);
+    if(element) {
+      resolve(element);
+    }
+  });
 }
 function createScript(){
   var theScript = document.createElement('script');
@@ -42,7 +42,7 @@ function addScript(){
 }
 
 button.onclick = function(){
-  section.appendChild(chartSection);
+  section2.appendChild(chartSection);
   chrome.runtime.sendMessage({greeting: "canvas_loaded"}, function(response) {
     console.log(response.farewell);
   });
