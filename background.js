@@ -24,6 +24,14 @@ chrome.runtime.onMessage.addListener(
                     chrome.tabs.executeScript({
                         file: 'sampleChart.js'
                     });
+                    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                        chrome.tabs.executeScript( tabs[0].id, {
+                            code: 'var button = document.getElementById("backButton");' + 
+                                'button.style.display = "None";' + 
+                                'var buttonContainer = document.getElementById("buttonContainer");' +
+                                'buttonContainer.style.display = "block";'
+                        });
+                    });
                     chrome.storage.local.set({chart_loaded: true}, function () {
                         console.log('chart_loaded set to ' + true)
                     });
@@ -34,8 +42,6 @@ chrome.runtime.onMessage.addListener(
                         chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy chart"}, function(response){
                             console.log(response.farewell);
                         });
-                    });
-                    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
                         chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy specific chart"}, function(response){
                             console.log(response.farewell);
                         });
@@ -59,14 +65,56 @@ chrome.runtime.onMessage.addListener(
                 chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy specific chart"}, function(response){
                     console.log(response.farewell);
                 });
-            });
-            chrome.tabs.executeScript({
-                file: 'sampleChart.js'
+                chrome.tabs.executeScript( tabs[0].id, {
+                    code: 'var button = document.getElementById("backButton");' +
+                        'button.style.display = "None";' +
+                        'var buttonContainer = document.getElementById("buttonContainer");' +
+                        'buttonContainer.style.display = "block";'
+                });
+                chrome.tabs.executeScript( tabs[0].id, {
+                    file: 'sampleChart.js'
+                });
             });
             sendResponse({farewell: "received"});
         }
     }
 );
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.greeting == "today button pressed") {
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy chart"}, function(response){
+                    console.log(response.farewell);
+                });
+                chrome.tabs.executeScript( tabs[0].id, {
+                    file: 'sampleChart.js'
+                });
+            });
+        }
+        else if (request.greeting == "week button pressed"){
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy chart"}, function(response){
+                    console.log(response.farewell);
+                });
+                chrome.tabs.executeScript( tabs[0].id, {
+                    file: 'past7days.js'
+                });
+            });
+        }
+        else if (request.greeting == "month button pressed"){
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                chrome.tabs.sendMessage(tabs[0].id, {greeting: "destroy chart"}, function(response){
+                    console.log(response.farewell);
+                });
+                chrome.tabs.executeScript( tabs[0].id, {
+                    file: 'past30days.js'
+                });
+            });
+        }
+        sendResponse({farewell: "received"});
+    });
+
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
@@ -79,6 +127,12 @@ chrome.runtime.onMessage.addListener(
                 chrome.tabs.executeScript({
                     code: 'var button = document.getElementById("backButton");' +
                         'button.style.display = "block";'
+                });
+                chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                    chrome.tabs.executeScript( tabs[0].id, {
+                        code: 'var buttonContainer = document.getElementById("buttonContainer");' +
+                        'buttonContainer.style.display = "none";'
+                    });
                 });
 
                 if (request.index == 0){

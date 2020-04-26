@@ -1,5 +1,6 @@
 const section = document.getElementById('u_0_a'); `pagelet_reminders`
 var button = document.createElement("button");
+button.id = "adTrackerButton";
 var text = document.createTextNode("Ad Tracker");
 button.appendChild(text);
 section.appendChild(button);
@@ -8,6 +9,28 @@ var backButton = document.createElement("button");
 var backButtonText = document.createTextNode("Back");
 backButton.appendChild(backButtonText);
 backButton.id = "backButton";
+
+var buttonContainer = document.createElement('div');
+buttonContainer.id = "buttonContainer";
+
+var todayButton = document.createElement("button");
+var todayButtonText = document.createTextNode("Past 24 Hours");
+todayButton.appendChild(todayButtonText);
+todayButton.id = "todayButton";
+
+var weekButton = document.createElement("button");
+var weekButtonText = document.createTextNode("Past 7 Days");
+weekButton.appendChild(weekButtonText);
+weekButton.id = "weekButton";
+
+var monthButton = document.createElement("button");
+var monthButtonText = document.createTextNode("Past 30 Days");
+monthButton.appendChild(monthButtonText);
+monthButton.id = "monthButton";
+
+buttonContainer.appendChild(todayButton);
+buttonContainer.appendChild(weekButton);
+buttonContainer.appendChild(monthButton);
 
 var chartContainer = document.createElement('div');
 chartContainer.id = 'chartContainer';
@@ -65,6 +88,7 @@ chartSection.appendChild(subtitle2);
 chartSection.appendChild(link);
 chartSection.appendChild(chartContainer);
 chartSection.appendChild(backButton);
+chartSection.appendChild(buttonContainer);
 chartSection.appendChild(footer);
 
 const section2 = document.getElementById('pagelet_bluebar');
@@ -82,6 +106,23 @@ button.onclick = function(){
 
 backButton.onclick = function(){ 
   chrome.runtime.sendMessage({greeting: "back button pressed", }, function(response) {
+    console.log(response.farewell);
+  });
+}
+
+todayButton.onclick = function(){ 
+  chrome.runtime.sendMessage({greeting: "today button pressed", }, function(response) {
+    console.log(response.farewell);
+  });
+}
+weekButton.onclick = function(){ 
+  chrome.runtime.sendMessage({greeting: "week button pressed", }, function(response) {
+    console.log(response.farewell);
+  });
+}
+
+monthButton.onclick = function(){ 
+  chrome.runtime.sendMessage({greeting: "month button pressed", }, function(response) {
     console.log(response.farewell);
   });
 }

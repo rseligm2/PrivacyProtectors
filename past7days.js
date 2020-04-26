@@ -1,4 +1,7 @@
 var ctx = document.getElementById('myChart').getContext('2d');
+var defaultLegendClickHandler = Chart.defaults.global.legend.onClick;
+var newLegendClickHandler = function (e, legendItem) {};
+
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -28,10 +31,19 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+      onClick:function(e){ 
+        var activePoints = myChart.getElementsAtEvent(e); 
+        var selectedIndex = activePoints[0]._index;
+        chrome.runtime.sendMessage({greeting: "canvas2_loaded", index: selectedIndex}, function(response) {
+          console.log(response.farewell);
+        });
+        myChart.destroy();
+      },
       responsive: true,
       maintainAspectRatio: false,
       legend: {
         fontColor: "black",
+        onClick: newLegendClickHandler
       }
     }
 });

@@ -8,10 +8,18 @@
     margin-top: 30px;
     text-align: center;
 }
+#adTrackerButton {
+    background-color: transparent;
+    border: None;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+}
 #footer {
     text-align: center;
     font-family: sans-serif;
     font-size: 12px;
+    margin-top: 20px;
 }
 #title {
     font-size: 35px;
@@ -29,10 +37,42 @@
     margin-bottom: 25px;
     margin-top: 20px;
 }
-#backButton{
-    display: None;
+#backButton {
+    display: none;
     margin: auto;
-    margin-bottom: 20px;
+    border: None;
+    font-weight: bold;
+    background-color: transparent;
+}
+#backButton:hover {
+    color: grey;
+}
+#todayButton {
+    border: None;
+    display: inline-block;
+    font-weight: bold;
+    background-color: transparent;
+}
+#todayButton:hover {
+    color: grey;
+}
+#weekButton {
+    border: None;
+    font-weight: bold;
+    display: inline-block;
+    background-color: transparent;
+}
+#weekButton:hover {
+    color: grey;
+}
+#monthButton {
+    font-weight: bold;
+    border: None;
+    display: inline-block;
+    background-color: transparent;
+}
+#monthButton:hover {
+    color: grey;
 }
 .subtitles {
     font-size: 12px;

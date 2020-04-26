@@ -1,5 +1,8 @@
 var ctx = document.getElementById('myChart').getContext('2d');
 
+var defaultLegendClickHandler = Chart.defaults.global.legend.onClick;
+var newLegendClickHandler = function (e, legendItem) {};
+
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -29,14 +32,14 @@ var myChart = new Chart(ctx, {
       title: {
         display: true,
         text: "Insurance",
-        fontSize: 30,
-        fontStyle: "normal",
+        fontSize: 20,
         fontColor: "black",
       },
       responsive: true,
       maintainAspectRatio: false,
       legend: {
         fontColor: "black",
+        onClick: newLegendClickHandler
       }
     }
 });

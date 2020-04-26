@@ -1,17 +1,7 @@
 var ctx = document.getElementById('myChart').getContext('2d');
 
 var defaultLegendClickHandler = Chart.defaults.global.legend.onClick;
-var newLegendClickHandler = function (e, legendItem) {
-    var index = legendItem.datasetIndex;
-    var ci = this.chart;
-    var meta = ci.getDatasetMeta(index);
-
-    // See controller.isDatasetVisible comment
-    //meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-
-    // We hid a dataset ... rerender the chart
-    //ci.update();
-};
+var newLegendClickHandler = function (e, legendItem) {};
 
 var myChart = new Chart(ctx, {
     type: 'doughnut',
