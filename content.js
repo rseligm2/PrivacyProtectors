@@ -28,6 +28,8 @@ theScript.src = "sampleChart.js";
 
 const canvas = document.createElement("canvas");
 canvas.id = "myChart";
+canvas.width = "400";
+canvas.height = "400”;
 canvas.addEventListener("load", addScript);
 
 var link = document.createElement('link');
