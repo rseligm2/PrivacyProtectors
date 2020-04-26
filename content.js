@@ -1,6 +1,8 @@
 const section = document.getElementById('u_0_a'); `pagelet_reminders`
 var button = document.createElement("button");
 var text = document.createTextNode("Ad Tracker");
+button.appendChild(text);
+section.appendChild(button);
 
 var chartContainer = document.createElement('div');
 chartContainer.id = 'chartContainer';
@@ -10,25 +12,27 @@ title.id = 'title';
 var titleText = document.createTextNode("Control What You See In Your Feed.");
 title.appendChild(titleText);
 
-var subTitle1 = document.createElement('p');
-var subTitleText1 = document.createTextNode("Facebook's ad platform curates a personalized feed of the products and services you may enjoy using third-party data.");
-subTitleText1.class = "subtitles";
-subTitle1.appendChild(subTitleText1);
+var subtitle1 = document.createElement('h1');
+subtitle1.class = "subtitles";
+var subtitleText1 = document.createTextNode("Facebook's ad platform curates a personalized feed of the products and services you may enjoy using third-party data.");
+subtitle1.appendChild(subtitleText1);
 
-var subTitle2 = document.createElement('p');
-var subTitleText2 = document.createTextNode("Learn what influences the ads you see and take control over your ad experience.");
-subTitleText2.class = "subtitles";
-subTitle2.appendChild(subTitleText2);
+var subtitle2 = document.createElement('h1');
+subtitle2.class = "subtitles";
+var subtitleText2 = document.createTextNode("Learn what influences the ads you see and take control over your ad experience.");
+subtitle2.appendChild(subtitleText2);
 
-var footer = document.createTextNode('To control the information that is used to deliver personalized ads, visit ');
+var footer = document.createElement('h1');
 footer.id = "footer";
+var footerText = document.createTextNode('To control the information that is used to deliver personalized ads, visit ');
 var linkName = document.createTextNode("Your Ad Preferences");
+var period = document.createTextNode(".");
 var linkText = document.createElement('a');
 linkText.appendChild(linkName);
 linkText.href = "https://www.facebook.com/ads/preferences/?entry_product=ad_settings_screen";
-
-button.appendChild(text);
-section.appendChild(button);
+footer.appendChild(footerText);
+footer.appendChild(linkText)
+footer.appendChild(period);
 
 const add = document.createElement('script');
 add.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js';
@@ -51,12 +55,11 @@ const chartSection = document.createElement('div');
 chartSection.id = "chartSection";
 
 chartSection.appendChild(title);
-chartSection.appendChild(subTitle1);
-chartSection.appendChild(subTitle2);
+chartSection.appendChild(subtitle1);
+chartSection.appendChild(subtitle2);
 chartSection.appendChild(link);
 chartSection.appendChild(chartContainer);
 chartSection.appendChild(footer);
-chartSection.appendChild(linkText);
 
 const section2 = document.getElementById('pagelet_bluebar');
 
