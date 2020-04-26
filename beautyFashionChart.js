@@ -47,3 +47,12 @@ var myChart = new Chart(ctx, {
         }
       }
 });
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if(request.greeting == "destroy chart"){
+        myChart.destroy();
+        console.log("chart destroyed");
+        sendResponse({farewell: "received"});
+      }
+    });
